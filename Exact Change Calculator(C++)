@@ -1,0 +1,81 @@
+#include <iostream>
+#include <vector> 
+using namespace std;
+
+void ExactChange(int userTotal, vector<int>& coinVals) {
+   
+   coinVals.at(3) = userTotal / 25;
+      
+   userTotal %= 25;
+      
+   coinVals.at(2) = userTotal / 10;
+      
+   userTotal %= 10;
+      
+   coinVals.at(1) = userTotal / 5;
+      
+   userTotal %= 5;
+      
+   coinVals.at(0) = userTotal;
+}
+      
+      
+      
+
+int main() {
+   int inputVal;
+   vector<int> changeAmount(4);
+   
+   cout << "Enter your total change amount in cents." << endl;
+   cin >> inputVal;
+   
+   if (inputVal <= 0) {
+      cout << "No change." << endl;
+   }
+   else {
+      ExactChange (inputVal, changeAmount);
+      
+      if (changeAmount.at(0) > 0){
+         
+         if (changeAmount.at(0) == 1) { 
+            cout << changeAmount.at(0) << " penny." << endl;
+         }
+         else {
+            cout << changeAmount.at(0) << " pennies." << endl;
+         }
+      }
+
+      if (changeAmount.at(1) > 0){
+         
+         if (changeAmount.at(1) == 1) { 
+            cout << changeAmount.at(1) << " nickel." << endl;
+         }
+         else {
+            cout << changeAmount.at(1) << " nickels." << endl;
+         }
+      }
+
+      if (changeAmount.at(2) > 0){
+         
+         if (changeAmount.at(2) == 1) { 
+            cout << changeAmount.at(2) << " dime." << endl;
+         }
+         else {
+            cout << changeAmount.at(2) << " dimes." << endl;
+         }
+      }
+
+      if (changeAmount.at(3) > 0){
+         
+         if (changeAmount.at(3) == 1) { 
+            cout << changeAmount.at(3) << " quarter." << endl;
+         }
+         else {
+            cout << changeAmount.at(3) << " quarters." << endl;
+         }
+      }
+   }
+
+
+   return 0;
+}
