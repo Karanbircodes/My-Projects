@@ -1,0 +1,44 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+
+void SortVector(vector<int>& myVec) {
+    int numAmount = myVec.size();
+    for (int i = 0; i < numAmount - 1; i++) {
+        for (int j = 0; j < numAmount - i - 1; j++) {
+            if (myVec.at(j) < myVec.at(j + 1)) {
+                
+                swap(myVec.at(j), myVec.at(j + 1));
+            }
+        }
+    }
+}
+
+int main() {
+    int numAmount;
+    cout << "Enter the amount of numbers to sort: ";
+    cin >> numAmount;
+
+    vector<int> numbers;
+
+    
+    for (int i = 0; i < numAmount; i++) {
+        int num;
+        cout << "Enter number: ";
+        cin >> num;
+        numbers.push_back(num);
+    }
+
+    cout << "Numbers in descending order: ";
+    SortVector(numbers);
+
+    
+    for (int i = 0; i < numAmount; i++) {
+        cout << numbers.at(i) << ",";
+        
+    }
+    cout << endl;
+
+    return 0;
+}
