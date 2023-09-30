@@ -1,0 +1,46 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+string GetPhoneNumber(vector<string> nameVec, vector<string> phoneNumberVec, string contactName) {
+    for (int i = 0; i < nameVec.size(); i++) {
+        if (nameVec[i] == contactName) {
+            return phoneNumberVec[i];
+        }
+    }
+    return "None";
+}
+
+int main() {
+    int numContacts;
+
+    cout << "How many contacts would you like to store? ";
+    cin >> numContacts;
+
+    vector<string> nameVec;
+    vector<string> phoneNumberVec;
+
+    
+    for (int i = 0; i < numContacts; i++) {
+        string input;
+        cout << "Enter contact information in the format (Name,Number): ";
+        cin >> input;
+        size_t commaPos = input.find(",");
+        if (commaPos != string::npos) {
+            string name = input.substr(0, commaPos);
+            string phoneNumber = input.substr(commaPos + 1);
+            nameVec.push_back(name);
+            phoneNumberVec.push_back(phoneNumber);
+        }
+    }
+
+    string contactName;
+    cout << "Which contact's number would you like to search for? ";
+    cin >> contactName;
+
+    string phoneNumber = GetPhoneNumber(nameVec, phoneNumberVec, contactName);
+    
+    cout << phoneNumber << endl;
+    
+   return 0;
+}
