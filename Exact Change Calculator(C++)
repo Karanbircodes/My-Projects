@@ -19,9 +19,6 @@ void ExactChange(int userTotal, vector<int>& coinVals) {
    coinVals.at(0) = userTotal;
 }
       
-      
-      
-
 int main() {
    int inputVal;
    vector<int> changeAmount(4);
@@ -75,7 +72,5 @@ int main() {
          }
       }
    }
-
-
    return 0;
 }
