@@ -1,0 +1,42 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static String getPhoneNumber(ArrayList<String> nameList, ArrayList<String> phoneNumberList, String contactName) {
+        for (int i = 0; i < nameList.size(); i++) {
+            if (nameList.get(i).equals(contactName)) {
+                return phoneNumberList.get(i);
+            }
+        }
+        return "None";
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("How many contacts would you like to store? ");
+        int numContacts = scanner.nextInt();
+
+        ArrayList<String> nameList = new ArrayList<>();
+        ArrayList<String> phoneNumberList = new ArrayList<>();
+
+        for (int i = 0; i < numContacts; i++) {
+            System.out.print("Enter contact information in the format (Name,Number): ");
+            String input = scanner.next();
+            int commaPos = input.indexOf(",");
+            if (commaPos != -1) {
+                String name = input.substring(0, commaPos);
+                String phoneNumber = input.substring(commaPos + 1);
+                nameList.add(name);
+                phoneNumberList.add(phoneNumber);
+            }
+        }
+
+        System.out.print("Which contact's number would you like to search for? ");
+        scanner.nextLine(); // Consume newline left-over
+        String contactName = scanner.nextLine();
+
+        String phoneNumber = getPhoneNumber(nameList, phoneNumberList, contactName);
+
+        System.out.println(phoneNumber);
+    }
+}
